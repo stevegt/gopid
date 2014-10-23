@@ -3,6 +3,7 @@
 package control
 
 import (
+	"log"
 	"math"
 	"sync"
 	"time"
@@ -55,7 +56,7 @@ type Generator struct {
 // Start begins calling the handler at the requested frequency.
 func (generator *Generator) Start() {
 	if generator.Handler == nil {
-		panic("generator requires an handler")
+		log.Panic("generator requires an handler")
 	}
 
 	go generator.run()
