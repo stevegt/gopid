@@ -35,6 +35,8 @@ type PID struct {
 	prev_target float64
 	prev_delta  float64
 	outputs     []float64
+
+	Verbose bool
 }
 
 // Update performs an iteration of the PID controller with a variable dt based on the system time.
@@ -83,7 +85,9 @@ func (c *PID) Step(value float64, dt time.Duration) (output float64) {
 		c.outputs = c.outputs[len(c.outputs)-c.MeanLength:]
 	}
 	c.MeanOutput = stat.Mean(c.outputs, nil)
-	fmt.Printf("pid input %.2f target %.2f output %.2f mean %.2f kp %.4f ki %.6f kd %.4f delta %.3f step %.3f integral %.3f derivative %.3f\n", value, c.Target, output, c.MeanOutput, c.Kp, c.Ki, c.Kd, delta, step, c.integral, derivative)
+	if c.Verbose {
+		fmt.Printf("pid input %.2f target %.2f output %.2f mean %.2f kp %.4f ki %.6f kd %.4f delta %.3f step %.3f integral %.3f derivative %.3f\n", value, c.Target, output, c.MeanOutput, c.Kp, c.Ki, c.Kd, delta, step, c.integral, derivative)
+	}
 	return
 }
 
