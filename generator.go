@@ -1,6 +1,6 @@
 // Copyright (c) 2014 Datacratic. All rights reserved.
 
-package control
+package gopid
 
 import (
 	"log"

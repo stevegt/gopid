@@ -1,6 +1,9 @@
 // Copyright (c) 2014 Datacratic. All rights reserved.
+//
+// (Datacritic released this on github using the Apache 2.0 license.)
+// Modified by Steve Traugott 2019-2024.
 
-package control
+package gopid
 
 import (
 	"fmt"
